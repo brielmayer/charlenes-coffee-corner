@@ -1,9 +1,9 @@
 package com.brielmayer.coffeecorner;
 
+import com.brielmayer.coffeecorner.extra.ExtraNotFoundException;
 import com.brielmayer.coffeecorner.order.InvalidOrderException;
 import com.brielmayer.coffeecorner.order.Order;
 import com.brielmayer.coffeecorner.order.OrderParser;
-import com.brielmayer.coffeecorner.extra.ExtraNotFoundException;
 import com.brielmayer.coffeecorner.product.ProductNotFoundException;
 
 import java.io.IOException;
