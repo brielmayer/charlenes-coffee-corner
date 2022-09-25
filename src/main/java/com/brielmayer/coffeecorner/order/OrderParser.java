@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class OrderParser {
+public final class OrderParser {
 
     private static final Pattern PRODUCT_SEPARATOR_PATTERN = Pattern.compile("\\W?,\\W?");
     private static final Pattern EXTRA_SEPARATOR_PATTERN = Pattern.compile("\\Wwith\\W");
