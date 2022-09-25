@@ -8,7 +8,7 @@ import com.brielmayer.coffeecorner.product.ProductNotFoundException;
 
 import java.io.IOException;
 
-public class Main {
+public final class Main {
 
     private static final Console CONSOLE = new Console();
 

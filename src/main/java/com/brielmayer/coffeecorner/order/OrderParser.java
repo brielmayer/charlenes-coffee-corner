@@ -40,24 +40,24 @@ public class OrderParser {
 
     private OrderedProduct getOrderedProduct(final String productName, final String[] extras) throws ProductNotFoundException, ExtraNotFoundException {
         final Product product = new ProductDao().getAllProducts().stream()
-            .filter(p -> p.getName().equals(productName))
+            .filter(p -> p.name().equals(productName))
             .findFirst()
             .orElseThrow(() -> new ProductNotFoundException(productName));
 
         final OrderedProduct orderedProduct = getOrderedProductWithoutExtras(product);
-        orderedProduct.getExtras().addAll(getExtras(product, extras));
+        orderedProduct.extras().addAll(getExtras(product, extras));
         return orderedProduct;
     }
 
     private OrderedProduct getOrderedProductWithoutExtras(final Product product) {
-        return new OrderedProduct(product.getName(), product.getPrice(), product.getType(), new ArrayList<>());
+        return new OrderedProduct(product.name(), product.price(), product.type(), new ArrayList<>());
     }
 
     private List<Extra> getExtras(final Product product, final String[] extras) throws ExtraNotFoundException {
         final List<Extra> actualExtras = new ArrayList<>();
         for (final String extra : extras) {
-            final Extra actualExtra = product.getExtras().stream()
-                .filter(e -> e.getName().equals(extra))
+            final Extra actualExtra = product.extras().stream()
+                .filter(e -> e.name().equals(extra))
                 .findFirst()
                 .orElseThrow(() -> new ExtraNotFoundException(extra));
             actualExtras.add(actualExtra);

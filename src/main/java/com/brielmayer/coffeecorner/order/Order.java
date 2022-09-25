@@ -10,7 +10,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-// Entity
 public class Order {
 
     private static final int FREE_BEVERAGE = 5;
@@ -37,19 +36,19 @@ public class Order {
         BigDecimal finalPrice = new BigDecimal("0.00");
         for (final OrderedProduct product : orderedProducts) {
 
-            if(product.getType() == ProductType.BEVERAGE && ++tempStampsOnCard > FREE_BEVERAGE) {
+            if(product.type() == ProductType.BEVERAGE && ++tempStampsOnCard > FREE_BEVERAGE) {
                 tempStampsOnCard = 0;
             } else {
-                finalPrice = finalPrice.add(product.getPrice());
+                finalPrice = finalPrice.add(product.price());
             }
 
             // sort extras by price, so customer gets a discount on the most expensive extra
-            final List<Extra> sortedExtras = new ArrayList<>(product.getExtras());
-            sortedExtras.sort(Comparator.comparing(Extra::getPrice, Collections.reverseOrder()));
+            final List<Extra> sortedExtras = new ArrayList<>(product.extras());
+            sortedExtras.sort(Comparator.comparing(Extra::price, Collections.reverseOrder()));
 
             for (final Extra extra : sortedExtras) {
                 if (--numberOfSnacks < 0) {
-                    finalPrice = finalPrice.add(extra.getPrice());
+                    finalPrice = finalPrice.add(extra.price());
                 }
             }
         }
@@ -68,22 +67,22 @@ public class Order {
         stringBuilder.append(String.format(format, "----", "-----"));
 
         for (final OrderedProduct product : orderedProducts) {
-            if(product.getType() == ProductType.BEVERAGE && ++tempStampsOnStampCard > FREE_BEVERAGE) {
+            if(product.type() == ProductType.BEVERAGE && ++tempStampsOnStampCard > FREE_BEVERAGE) {
                 tempStampsOnStampCard = 0;
-                stringBuilder.append(String.format(format, product.getName(), "0.00"));
+                stringBuilder.append(String.format(format, product.name(), "0.00"));
             } else {
-                stringBuilder.append(String.format(format, product.getName(), product.getPrice()));
+                stringBuilder.append(String.format(format, product.name(), product.price()));
             }
 
             // sort extras by price, so customer gets a discount on the most expensive extra
-            final List<Extra> sortedExtras = new ArrayList<>(product.getExtras());
-            sortedExtras.sort(Comparator.comparing(Extra::getPrice, Collections.reverseOrder()));
+            final List<Extra> sortedExtras = new ArrayList<>(product.extras());
+            sortedExtras.sort(Comparator.comparing(Extra::price, Collections.reverseOrder()));
 
             for (final Extra extra : sortedExtras) {
                 if (--numberOfSnacks < 0) {
-                    stringBuilder.append(String.format(format, "+ " + extra.getName(), extra.getPrice()));
+                    stringBuilder.append(String.format(format, "+ " + extra.name(), extra.price()));
                 } else {
-                    stringBuilder.append(String.format(format, "+ " + extra.getName(), "0.00"));
+                    stringBuilder.append(String.format(format, "+ " + extra.name(), "0.00"));
                 }
             }
         }
@@ -99,7 +98,7 @@ public class Order {
 
     private int getNumberOfSnacks() {
         return orderedProducts.stream()
-            .filter(orderedProduct -> orderedProduct.getType() == ProductType.SNACK)
+            .filter(orderedProduct -> orderedProduct.type() == ProductType.SNACK)
             .mapToInt(orderedProduct -> 1)
             .sum();
     }

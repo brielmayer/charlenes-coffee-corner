@@ -15,10 +15,10 @@ public class OrderParserTest {
 
         // expect 1 product
         Assertions.assertEquals(1, order.getOrderedProducts().size());
-        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).getName());
+        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).name());
 
         // expect 1 extra
-        Assertions.assertEquals(0, order.getOrderedProducts().get(0).getExtras().size());
+        Assertions.assertEquals(0, order.getOrderedProducts().get(0).extras().size());
     }
 
     @Test
@@ -27,11 +27,11 @@ public class OrderParserTest {
 
         // expect 1 product
         Assertions.assertEquals(1, order.getOrderedProducts().size());
-        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).getName());
+        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).name());
 
         // expect 1 extra
-        Assertions.assertEquals(1, order.getOrderedProducts().get(0).getExtras().size());
-        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).getExtras().get(0).getName());
+        Assertions.assertEquals(1, order.getOrderedProducts().get(0).extras().size());
+        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).extras().get(0).name());
     }
 
     @Test
@@ -40,12 +40,12 @@ public class OrderParserTest {
 
         // expect 1 product
         Assertions.assertEquals(1, order.getOrderedProducts().size());
-        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).getName());
+        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).name());
 
         // expect 2 extras
-        Assertions.assertEquals(2, order.getOrderedProducts().get(0).getExtras().size());
-        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).getExtras().get(0).getName());
-        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).getExtras().get(1).getName());
+        Assertions.assertEquals(2, order.getOrderedProducts().get(0).extras().size());
+        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).extras().get(0).name());
+        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).extras().get(1).name());
     }
 
     @Test
@@ -54,12 +54,12 @@ public class OrderParserTest {
 
         // expect 1 product
         Assertions.assertEquals(1, order.getOrderedProducts().size());
-        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).getName());
+        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).name());
 
         // expect 2 extras
-        Assertions.assertEquals(2, order.getOrderedProducts().get(0).getExtras().size());
-        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).getExtras().get(0).getName());
-        Assertions.assertEquals("special roast", order.getOrderedProducts().get(0).getExtras().get(1).getName());
+        Assertions.assertEquals(2, order.getOrderedProducts().get(0).extras().size());
+        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).extras().get(0).name());
+        Assertions.assertEquals("special roast", order.getOrderedProducts().get(0).extras().get(1).name());
     }
 
     @Test
@@ -68,12 +68,12 @@ public class OrderParserTest {
 
         // expect 2 product
         Assertions.assertEquals(2, order.getOrderedProducts().size());
-        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).getName());
-        Assertions.assertEquals("bacon roll", order.getOrderedProducts().get(1).getName());
+        Assertions.assertEquals("small coffee", order.getOrderedProducts().get(0).name());
+        Assertions.assertEquals("bacon roll", order.getOrderedProducts().get(1).name());
 
         // expect 1 extra
-        Assertions.assertEquals(1, order.getOrderedProducts().get(0).getExtras().size());
-        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).getExtras().get(0).getName());
+        Assertions.assertEquals(1, order.getOrderedProducts().get(0).extras().size());
+        Assertions.assertEquals("extra milk", order.getOrderedProducts().get(0).extras().get(0).name());
     }
 
     // and so on...
